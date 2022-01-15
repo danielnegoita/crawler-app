@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use App\Domain\Url;
 use App\Domain\Model\Link;
 use PHPUnit\Framework\TestCase;
 
@@ -10,7 +11,7 @@ class PageLinksTest extends TestCase
     public function testCanCreateLink()
     {
         $pageUrl = 'http://example.com';
-        $linkFromPage = 'http://test.com';
+        $linkFromPage = Url::fromString('http://test.com');
 
         $link = Link::create($linkFromPage, $pageUrl);
 

@@ -2,6 +2,7 @@
 
 namespace App\Domain\Model;
 
+use App\Domain\Url;
 use App\Domain\Model\Traits\SoftDeleteable;
 use App\Domain\Model\Traits\Timestampable;
 
@@ -13,22 +14,22 @@ final class Link
 
     private string $page;
 
-    private function __construct(string $link, string $page)
+    private function __construct(Url $link, string $page)
     {
-        $this->setLink($link);
+        $this->setLink($link->toString());
         $this->setPage($page);
         $this->setCreatedAt();
         $this->setUpdatedAt();
     }
 
-    public static function create(string $link, string $page): self
+    public static function create(Url $link, string $page): self
     {
         return new self($link, $page);
     }
 
-    public function link(): string
+    public function link(): Url
     {
-        return $this->link;
+        return Url::fromString($this->link);
     }
 
     public function page(): string
