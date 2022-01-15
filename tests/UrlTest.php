@@ -10,7 +10,7 @@ class UrlTest extends TestCase
     public function testCanCreatePage()
     {
         $url = 'http://test.com';
-        $encode = urlencode('http://test.com');
+        $encode = urlencode($url);
 
         $urlObject = Url::fromString($url);
 
