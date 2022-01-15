@@ -7,14 +7,14 @@ use PHPUnit\Framework\TestCase;
 
 class PageLinksTest extends TestCase
 {
-    public function testCanSavePageLink()
+    public function testCanCreateLink()
     {
         $pageUrl = 'http://example.com';
-        $pageLink = 'http://test.com';
+        $linkFromPage = 'http://test.com';
 
-        $link = Link::create($pageLink, $pageUrl);
+        $link = Link::create($linkFromPage, $pageUrl);
 
         $this->assertEquals($pageUrl, $link->page());
-        $this->assertEquals($pageLink, $link->link());
+        $this->assertEquals($linkFromPage, $link->link());
     }
 }

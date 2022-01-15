@@ -2,20 +2,16 @@
 
 namespace App\Domain\Model;
 
-use DateTime;
-use DateTimeInterface;
+use App\Domain\Model\Traits\SoftDeleteable;
+use App\Domain\Model\Traits\Timestampable;
 
 final class Link
 {
+    use Timestampable, SoftDeleteable;
+
     private string $link;
 
     private string $page;
-
-    private DateTimeInterface $deletedAt;
-
-    private DateTimeInterface $createdAt;
-
-    private DateTimeInterface $updatedAt;
 
     private function __construct(string $link, string $page)
     {
@@ -40,21 +36,6 @@ final class Link
         return $this->page;
     }
 
-    public function createdAt(): DateTimeInterface
-    {
-        return $this->createdAt;
-    }
-
-    public function updatedAt(): DateTimeInterface
-    {
-        return $this->updatedAt;
-    }
-
-    public function deletedAt(): ?DateTimeInterface
-    {
-        return $this->deletedAt;
-    }
-
     private function setLink(string $link): void
     {
         $this->link = $link;
@@ -63,20 +44,5 @@ final class Link
     private function setPage(string $page): void
     {
         $this->page = $page;
-    }
-
-    private function setCreatedAt(?DateTimeInterface $createdAt = null): void
-    {
-        $this->createdAt = $createdAt ?? new DateTime();
-    }
-
-    private function setUpdatedAt(?DateTimeInterface $updatedAt = null): void
-    {
-        $this->updatedAt = $updatedAt ?? new DateTime();
-    }
-
-    public function setDeletedAt(?DateTimeInterface $deletedAt): void
-    {
-        $this->deletedAt = $deletedAt;
     }
 }
