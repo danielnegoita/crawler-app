@@ -13,7 +13,10 @@ final class Url implements ValueObject
 
     public static function fromString(string $url): self
     {
-        //TODO: add validation here
+        if (!filter_var($url, FILTER_VALIDATE_URL)) {
+            throw new InvalidUrlException();
+        }
+
         return new self($url);
     }
 
