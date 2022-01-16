@@ -2,7 +2,9 @@
 
 namespace App\Infrastructure;
 
+use App\Domain\File;
+
 interface FileSystemAdaptorInterface
 {
-    public function savePage(string $html, string $name, string $path): bool;
+    public function savePage(File $file): bool;
 }

@@ -2,6 +2,7 @@
 
 namespace App\Infrastructure;
 
+use App\Domain\File;
 use App\Domain\FileSystemRepositoryInterface;
 
 class FileSystemRepository implements FileSystemRepositoryInterface
@@ -13,8 +14,8 @@ class FileSystemRepository implements FileSystemRepositoryInterface
         $this->fileSystemAdaptor = $fileSystemAdaptor;
     }
 
-    public function savePage(string $html, string $name, string $path): bool
+    public function savePage(File $file): bool
     {
-        return $this->fileSystemAdaptor->savePage($html, $name, $path);
+        return $this->fileSystemAdaptor->savePage($file);
     }
 }
