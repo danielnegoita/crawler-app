@@ -44,4 +44,17 @@ class FileSystemTest extends TestCase
 
         $this->assertFileExists(dirname(__DIR__, 1) . '/' . $file->path());
     }
+
+    public function testCanDeleteFileInPath()
+    {
+        $path = 'test.html';
+
+        $flySystemAdapter = new FlySystemAdapter();
+
+        $flySystem = new FileSystemRepository($flySystemAdapter);
+
+        $flySystem->deleteFile($path);
+
+        $this->assertFileDoesNotExist(dirname(__DIR__, 1) . '/' . $path);
+    }
 }

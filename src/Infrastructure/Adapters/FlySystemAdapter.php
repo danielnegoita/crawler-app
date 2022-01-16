@@ -5,10 +5,12 @@ namespace App\Infrastructure\Adapters;
 use App\Domain\File;
 use League\Flysystem\Filesystem;
 use League\Flysystem\UnableToWriteFile;
+use League\Flysystem\UnableToDeleteFile;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\Local\LocalFilesystemAdapter;
 use App\Infrastructure\FileSystemAdapterInterface;
 use App\Application\Exceptions\UnableToSaveFileException;
+use App\Application\Exceptions\UnableToDeleteFileException;
 
 class FlySystemAdapter implements FileSystemAdapterInterface
 {
@@ -34,6 +36,19 @@ class FlySystemAdapter implements FileSystemAdapterInterface
             return true;
         } catch (FilesystemException | UnableToWriteFile $exception) {
             throw new UnableToSaveFileException($exception);
+        }
+    }
+
+    /**
+     * @param string $path
+     * @throws UnableToDeleteFileException
+     */
+    public function deleteFile(string $path): void
+    {
+        try {
+            $this->filesystem->delete($path);
+        } catch (FilesystemException | UnableToDeleteFile $exception) {
+            throw new UnableToDeleteFileException($exception);
         }
     }
 }
