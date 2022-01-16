@@ -6,6 +6,7 @@ use App\Domain\Url;
 use App\Domain\File;
 use App\Domain\Model\Link;
 use App\Domain\CrawlerInterface;
+use App\Domain\TemplateEngineInterface;
 use App\Domain\FileSystemRepositoryInterface;
 use App\Domain\Model\LinkRepositoryInterface;
 
@@ -15,15 +16,19 @@ class CrawlerService
 
     private LinkRepositoryInterface $linkRepository;
 
+    private TemplateEngineInterface $templateEngine;
+
     private FileSystemRepositoryInterface $fileSystemRepository;
 
     public function __construct(
         CrawlerInterface $crawler,
         LinkRepositoryInterface $linkRepository,
+        TemplateEngineInterface $templateEngine,
         FileSystemRepositoryInterface $fileSystemRepository
     ) {
         $this->crawler = $crawler;
         $this->linkRepository = $linkRepository;
+        $this->templateEngine = $templateEngine;
         $this->fileSystemRepository = $fileSystemRepository;
     }
 
@@ -53,5 +58,25 @@ class CrawlerService
         $this->fileSystemRepository->saveFile($file);
 
         return $this;
+    }
+
+    public function generateSitemap(Url $url)
+    {
+        $pageLinks = $this->crawler->extractPageInternalLinks($url);
+
+        //TODO: move sitemap template name to .env
+        $html = $this->generateHtmlFromTemplate('sitemapTemplate.html', $pageLinks);
+
+        //TODO: move file location to .env (and maybe also the sitemap name)
+        $file = new File('sitemap.html', $html, 'files');
+
+        $this->fileSystemRepository->savePage($file);
+
+        return $this;
+    }
+
+    private function generateHtmlFromTemplate(string $template, ?array $data = []): string
+    {
+        return $this->templateEngine->render($template, $data);
     }
 }
