@@ -46,4 +46,12 @@ final class Link
     {
         $this->page = $page;
     }
+
+    public function toArray(): array
+    {
+        return [
+            'link' => $this->link()->toString(),
+            'page' => $this->page()
+        ];
+    }
 }
