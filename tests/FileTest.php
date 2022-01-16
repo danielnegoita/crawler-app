@@ -11,12 +11,12 @@ class FileTest extends TestCase
     {
         $filename = 'test.html';
         $content = 'Lorem ipsum';
-        $path = __DIR__;
+        $location = __DIR__;
 
-        $file = new File($filename, $content, $path);
+        $file = new File($filename, $content, $location);
 
         $this->assertEquals($filename, $file->filename());
         $this->assertEquals($content, $file->content());
-        $this->assertEquals($path, $file->path());
+        $this->assertEquals($location, $file->location());
     }
 }

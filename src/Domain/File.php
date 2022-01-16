@@ -8,13 +8,13 @@ final class File implements ValueObject
 
     private string $content;
 
-    private string $path;
+    private string $location;
 
-    public function __construct(string $filename, string $content, string $path)
+    public function __construct(string $filename, string $content, string $location)
     {
         $this->filename = $filename;
         $this->content = $content;
-        $this->path = $path;
+        $this->location = $location;
     }
 
     public function filename(): string
@@ -27,9 +27,14 @@ final class File implements ValueObject
         return $this->content;
     }
 
+    public function location(): string
+    {
+        return $this->location;
+    }
+
     public function path(): string
     {
-        return $this->path;
+        return $this->location . '/' . $this->filename;
     }
 
     public function equals(ValueObject $anObject): bool

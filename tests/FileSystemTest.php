@@ -5,6 +5,7 @@ namespace Tests;
 use App\Domain\File;
 use PHPUnit\Framework\TestCase;
 use App\Infrastructure\FileSystemRepository;
+use App\Infrastructure\Adapters\FlySystemAdapter;
 use App\Infrastructure\FileSystemAdapterInterface;
 
 class FileSystemTest extends TestCase
@@ -13,9 +14,9 @@ class FileSystemTest extends TestCase
     {
         $filename = 'test.html';
         $content = '<html><body>Lorem ipsum</body></html>';
-        $path = __DIR__;
+        $location = __DIR__;
 
-        $file = new File($filename, $content, $path);
+        $file = new File($filename, $content, $location);
 
         $fakeFileSystemAdapter = $this->createMock(FileSystemAdapterInterface::class);
         $fakeFileSystemAdapter->method('saveFile')
