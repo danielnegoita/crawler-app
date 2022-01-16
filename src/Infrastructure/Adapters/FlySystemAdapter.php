@@ -29,11 +29,10 @@ class FlySystemAdapter implements FileSystemAdapterInterface
      * @return bool
      * @throws UnableToSaveFileException
      */
-    public function saveFile(File $file): bool
+    public function saveFile(File $file): void
     {
         try {
             $this->filesystem->write($file->path(), $file->content());
-            return true;
         } catch (FilesystemException | UnableToWriteFile $exception) {
             throw new UnableToSaveFileException($exception);
         }
