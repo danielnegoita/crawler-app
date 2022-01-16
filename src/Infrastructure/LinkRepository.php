@@ -4,7 +4,6 @@ namespace App\Infrastructure;
 
 use App\Domain\Model\Link;
 use App\Domain\Model\LinkRepositoryInterface;
-use App\Infrastructure\Adapters\StorageAdaptorInterface;
 
 class LinkRepository implements LinkRepositoryInterface
 {

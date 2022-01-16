@@ -6,7 +6,7 @@ use App\Domain\Url;
 use App\Domain\Model\Link;
 use PHPUnit\Framework\TestCase;
 use App\Infrastructure\LinkRepository;
-use App\Infrastructure\Adapters\StorageAdaptorInterface;
+use App\Infrastructure\StorageAdaptorInterface;
 
 class LinkRepositoryTest extends TestCase
 {

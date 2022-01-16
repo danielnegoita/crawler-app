@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Infrastructure\Adapters;
+namespace App\Infrastructure;
 
 
 interface StorageAdaptorInterface
