@@ -27,4 +27,21 @@ class FileSystemTest extends TestCase
 
         $this->assertEquals(true, $response);
     }
+
+    public function testCanSaveFileToPath()
+    {
+        $filename = 'test.html';
+        $content = '<html><body>Lorem ipsum</body></html>';
+        $location = '/files';
+
+        $file = new File($filename, $content, $location);
+
+        $flySystemAdapter = new FlySystemAdapter();
+
+        $flySystem = new FileSystemRepository($flySystemAdapter);
+
+        $flySystem->saveFile($file);
+
+        $this->assertFileExists(dirname(__DIR__, 1) . '/' . $file->path());
+    }
 }
