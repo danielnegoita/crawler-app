@@ -5,9 +5,12 @@ namespace App\Infrastructure;
 use App\Domain\Url;
 use App\Domain\CrawlerInterface;
 use Symfony\Component\Panther\Client;
+use Symfony\Component\Panther\DomCrawler\Crawler;
 
 final class PantherCrawler implements CrawlerInterface
 {
+    private Client $client;
+
     public function extractPageInternalLinks(Url $url): ?array
     {
         $client = Client::createChromeClient();
@@ -34,5 +37,19 @@ final class PantherCrawler implements CrawlerInterface
                 ;
             })
             ->toArray();
+    }
+
+    public function extractHtmlFromPage(Url $url): ?string
+    {
+        return $this->crawl($url->toString())->html();
+    }
+
+    private function crawl(string $url): Crawler
+    {
+        $this->client = Client::createChromeClient();
+
+        $this->client->request('GET', $url);
+
+        return $this->client->getCrawler();
     }
 }

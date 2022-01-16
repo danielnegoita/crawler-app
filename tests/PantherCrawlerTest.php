@@ -19,4 +19,15 @@ class PantherCrawlerTest extends TestCase
 
         $this->assertTrue(count($pageLinks) > 0);
     }
+
+    public function testCanExtractHtmlFromPageProvidingAUrl()
+    {
+        $url = Url::fromString('http://example.com/');
+
+        $panther = new PantherCrawler();
+
+        $html = $panther->extractHtmlFromPage($url);
+
+        $this->assertMatchesRegularExpression('/<\/?[a-z][\s\S]*>/i', $html);
+    }
 }
