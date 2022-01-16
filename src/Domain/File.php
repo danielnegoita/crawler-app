@@ -8,9 +8,9 @@ final class File implements ValueObject
 
     private string $content;
 
-    private string $location;
+    private ?string $location;
 
-    public function __construct(string $filename, string $content, string $location)
+    public function __construct(string $filename, string $content, ?string $location = null)
     {
         $this->filename = $filename;
         $this->content = $content;
@@ -27,13 +27,17 @@ final class File implements ValueObject
         return $this->content;
     }
 
-    public function location(): string
+    public function location(): ?string
     {
         return $this->location;
     }
 
     public function path(): string
     {
+        if(!$this->location) {
+            return $this->filename;
+        }
+
         return $this->location . '/' . $this->filename;
     }
 
