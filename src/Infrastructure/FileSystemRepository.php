@@ -14,8 +14,8 @@ class FileSystemRepository implements FileSystemRepositoryInterface
         $this->fileSystemAdaptor = $fileSystemAdaptor;
     }
 
-    public function savePage(File $file): bool
+    public function saveFile(File $file): bool
     {
-        return $this->fileSystemAdaptor->savePage($file);
+        return $this->fileSystemAdaptor->saveFile($file);
     }
 }

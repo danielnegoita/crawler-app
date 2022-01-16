@@ -18,11 +18,11 @@ class FileSystemTest extends TestCase
         $file = new File($filename, $content, $path);
 
         $fakeFileSystemAdapter = $this->createMock(FileSystemAdapterInterface::class);
-        $fakeFileSystemAdapter->method('savePage')
+        $fakeFileSystemAdapter->method('saveFile')
             ->willReturn(true);
 
         $fileSystemRepository = new FileSystemRepository($fakeFileSystemAdapter);
-        $response = $fileSystemRepository->savePage($file);
+        $response = $fileSystemRepository->saveFile($file);
 
         $this->assertEquals(true, $response);
     }

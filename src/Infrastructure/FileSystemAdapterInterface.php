@@ -6,5 +6,5 @@ use App\Domain\File;
 
 interface FileSystemAdapterInterface
 {
-    public function savePage(File $file): bool;
+    public function saveFile(File $file): bool;
 }
