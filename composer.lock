@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "83a8dcd4c44bc5a0ec496d8d611e4c00",
+    "content-hash": "fde0442b7cb18ac5e2fef2510855f560",
     "packages": [
         {
             "name": "dbrekelmans/bdi",
@@ -1711,6 +1711,60 @@
                 }
             ],
             "time": "2021-12-29T10:14:09+00:00"
+        },
+        {
+            "name": "tightenco/collect",
+            "version": "v8.79.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tighten/collect.git",
+                "reference": "7b5a80ad7bd0d13e6a8ce1934f04de3ba98393c0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tighten/collect/zipball/7b5a80ad7bd0d13e6a8ce1934f04de3ba98393c0",
+                "reference": "7b5a80ad7bd0d13e6a8ce1934f04de3ba98393c0",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3|^8.0",
+                "symfony/var-dumper": "^3.4 || ^4.0 || ^5.0 || ^6.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "nesbot/carbon": "^2.23.0",
+                "phpunit/phpunit": "^8.3"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/Collect/Support/helpers.php",
+                    "src/Collect/Support/alias.php"
+                ],
+                "psr-4": {
+                    "Tightenco\\Collect\\": "src/Collect"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "description": "Collect - Illuminate Collections as a separate package.",
+            "keywords": [
+                "collection",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/tighten/collect/issues",
+                "source": "https://github.com/tighten/collect/tree/v8.79.0"
+            },
+            "time": "2022-01-12T17:08:58+00:00"
         }
     ],
     "packages-dev": [

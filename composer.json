@@ -39,6 +39,7 @@
 	"scripts": {},
 	"require": {
 		"dbrekelmans/bdi": "^1.0",
-		"symfony/panther": "^2.0"
+		"symfony/panther": "^2.0",
+		"tightenco/collect": "^8.79"
 	}
 }
