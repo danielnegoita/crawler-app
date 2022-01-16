@@ -8,16 +8,17 @@ use PHPUnit\Framework\TestCase;
 
 class PantherCrawlerTest extends TestCase
 {
-    //TODO: refactor this to crawl a local page so we assert something more relevant
+    // TODO: refactor this test to crawl a local page for better control
+    // TODO: write a test for when there are no internal links on the page
     public function testCanExtractInternalPageLinks()
     {
         $panther = new PantherCrawler();
 
-        $url = Url::fromString('https://api-platform.com');
+        $url = Url::fromString('https://api-platform.com/');
 
         $pageLinks = $panther->extractPageInternalLinks($url);
 
-        $this->assertTrue(count($pageLinks) > 0);
+        $this->assertGreaterThan(0, count($pageLinks));
     }
 
     public function testCanExtractHtmlFromPageProvidingAUrl()

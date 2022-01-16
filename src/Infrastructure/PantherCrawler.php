@@ -13,20 +13,15 @@ final class PantherCrawler implements CrawlerInterface
 
     public function extractPageInternalLinks(Url $url): ?array
     {
-        $client = Client::createChromeClient();
+        $results = $this->crawl($url->toString())->filter('body a');
 
-        $client->request('GET', $url->toString());
-
-        $crawler = $client->getCrawler();
-
-        $crawler = $crawler->filter('body a');
-        if(!$crawler->count()) {
+        if(!$results->count()) {
             return null;
         }
 
         $pageLinks = collect([]);
 
-        foreach($crawler->links() as $link) {
+        foreach($results->links() as $link) {
             $pageLinks->push($link->getUri());
         }
 
