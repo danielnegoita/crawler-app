@@ -41,6 +41,7 @@
 		"dbrekelmans/bdi": "^1.0",
 		"league/flysystem": "^3.0",
 		"symfony/panther": "^2.0",
-		"tightenco/collect": "^8.79"
+		"tightenco/collect": "^8.79",
+		"twig/twig": "^3.3"
 	}
 }
