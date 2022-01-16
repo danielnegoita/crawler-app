@@ -4,7 +4,7 @@ namespace App\Infrastructure;
 
 use App\Domain\File;
 
-interface FileSystemAdaptorInterface
+interface FileSystemAdapterInterface
 {
     public function savePage(File $file): bool;
 }

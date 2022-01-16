@@ -5,7 +5,7 @@ namespace Tests;
 use App\Domain\File;
 use PHPUnit\Framework\TestCase;
 use App\Infrastructure\FileSystemRepository;
-use App\Infrastructure\FileSystemAdaptorInterface;
+use App\Infrastructure\FileSystemAdapterInterface;
 
 class FileSystemTest extends TestCase
 {
@@ -17,11 +17,11 @@ class FileSystemTest extends TestCase
 
         $file = new File($filename, $content, $path);
 
-        $fakeFileSystemAdaptor = $this->createMock(FileSystemAdaptorInterface::class);
-        $fakeFileSystemAdaptor->method('savePage')
+        $fakeFileSystemAdapter = $this->createMock(FileSystemAdapterInterface::class);
+        $fakeFileSystemAdapter->method('savePage')
             ->willReturn(true);
 
-        $fileSystemRepository = new FileSystemRepository($fakeFileSystemAdaptor);
+        $fileSystemRepository = new FileSystemRepository($fakeFileSystemAdapter);
         $response = $fileSystemRepository->savePage($file);
 
         $this->assertEquals(true, $response);

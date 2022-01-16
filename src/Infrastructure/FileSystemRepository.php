@@ -7,9 +7,9 @@ use App\Domain\FileSystemRepositoryInterface;
 
 class FileSystemRepository implements FileSystemRepositoryInterface
 {
-    private FileSystemAdaptorInterface $fileSystemAdaptor;
+    private FileSystemAdapterInterface $fileSystemAdaptor;
 
-    public function __construct(FileSystemAdaptorInterface $fileSystemAdaptor)
+    public function __construct(FileSystemAdapterInterface $fileSystemAdaptor)
     {
         $this->fileSystemAdaptor = $fileSystemAdaptor;
     }
