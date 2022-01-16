@@ -16,5 +16,6 @@ class UrlTest extends TestCase
 
         $this->assertEquals($url, $urlObject->toString());
         $this->assertEquals($encode, $urlObject->toEncode());
+        $this->assertEquals('test.com', $urlObject->host());
     }
 }

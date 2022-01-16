@@ -20,6 +20,13 @@ final class Url implements ValueObject
         return new self($url);
     }
 
+    public function host(): ?string
+    {
+        $url = parse_url($this->url);
+
+        return $url['host'] ?? null;
+    }
+
     public function toString(): string
     {
         return $this->url;
