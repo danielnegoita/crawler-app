@@ -6,35 +6,15 @@ use App\Domain\File;
 use PHPUnit\Framework\TestCase;
 use App\Infrastructure\FileSystemRepository;
 use App\Infrastructure\Adapters\FlySystemAdapter;
-use App\Infrastructure\FileSystemAdapterInterface;
 
 class FileSystemTest extends TestCase
 {
-    public function testCanSavePage()
-    {
-        $filename = 'test.html';
-        $content = '<html><body>Lorem ipsum</body></html>';
-        $location = __DIR__;
-
-        $file = new File($filename, $content, $location);
-
-        $fakeFileSystemAdapter = $this->createMock(FileSystemAdapterInterface::class);
-        $fakeFileSystemAdapter->method('saveFile')
-            ->willReturn(true);
-
-        $fileSystemRepository = new FileSystemRepository($fakeFileSystemAdapter);
-        $response = $fileSystemRepository->saveFile($file);
-
-        $this->assertEquals(true, $response);
-    }
-
     public function testCanSaveFileToPath()
     {
         $filename = 'test.html';
         $content = '<html><body>Lorem ipsum</body></html>';
-        $location = '/files';
 
-        $file = new File($filename, $content, $location);
+        $file = new File($filename, $content);
 
         $flySystemAdapter = new FlySystemAdapter();
 
