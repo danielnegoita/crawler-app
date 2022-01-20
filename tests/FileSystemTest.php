@@ -14,7 +14,7 @@ class FileSystemTest extends TestCase
         $filename = 'test.html';
         $content = '<html><body>Lorem ipsum</body></html>';
 
-        $file = new File($filename, $content);
+        $file = new File($filename, $content , 'exports');
 
         $flySystemAdapter = new FlySystemAdapter();
 
@@ -27,7 +27,7 @@ class FileSystemTest extends TestCase
 
     public function testCanDeleteFileInPath()
     {
-        $path = 'test.html';
+        $path = 'exports/test.html';
 
         $flySystemAdapter = new FlySystemAdapter();
 
