@@ -1,2 +1,5 @@
 /vendor/*
 .idea
+
+# Cache, session files and logs
+/var/
