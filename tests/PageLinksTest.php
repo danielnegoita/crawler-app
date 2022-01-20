@@ -2,8 +2,8 @@
 
 namespace Tests;
 
-use App\Domain\Url;
-use App\Domain\Model\Link;
+use Crawler\Domain\Url;
+use Crawler\Domain\Model\Link;
 use PHPUnit\Framework\TestCase;
 
 class PageLinksTest extends TestCase

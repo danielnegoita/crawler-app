@@ -2,11 +2,11 @@
 
 namespace Tests;
 
-use App\Domain\Url;
-use App\Domain\Model\Link;
+use Crawler\Domain\Url;
+use Crawler\Domain\Model\Link;
 use PHPUnit\Framework\TestCase;
-use App\Infrastructure\LinkRepository;
-use App\Infrastructure\StorageAdaptorInterface;
+use Crawler\Infrastructure\LinkRepository;
+use Crawler\Infrastructure\StorageAdaptorInterface;
 
 class LinkRepositoryTest extends TestCase
 {

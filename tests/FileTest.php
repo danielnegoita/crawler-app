@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use App\Domain\File;
+use Crawler\Domain\File;
 use PHPUnit\Framework\TestCase;
 
 class FileTest extends TestCase

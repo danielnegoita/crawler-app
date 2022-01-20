@@ -3,8 +3,8 @@
 namespace Tests;
 
 use PHPUnit\Framework\TestCase;
-use App\Infrastructure\TemplateEngine;
-use App\Infrastructure\Adapters\TwigAdapter;
+use Crawler\Infrastructure\TemplateEngine;
+use Crawler\Infrastructure\Adapters\TwigAdapter;
 
 class TemplateEngineTest extends TestCase
 {

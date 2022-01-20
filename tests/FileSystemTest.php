@@ -2,10 +2,10 @@
 
 namespace Tests;
 
-use App\Domain\File;
+use Crawler\Domain\File;
 use PHPUnit\Framework\TestCase;
-use App\Infrastructure\FileSystemRepository;
-use App\Infrastructure\Adapters\FlySystemAdapter;
+use Crawler\Infrastructure\FileSystemRepository;
+use Crawler\Infrastructure\Adapters\FlySystemAdapter;
 
 class FileSystemTest extends TestCase
 {

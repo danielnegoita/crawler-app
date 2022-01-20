@@ -2,8 +2,8 @@
 
 namespace Tests;
 
-use App\Domain\Url;
-use App\Infrastructure\PantherCrawler;
+use Crawler\Domain\Url;
+use Crawler\Infrastructure\PantherCrawler;
 use PHPUnit\Framework\TestCase;
 
 class PantherCrawlerTest extends TestCase
