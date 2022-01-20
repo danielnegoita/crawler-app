@@ -53,7 +53,7 @@ class CrawlerService
 
         $html = $this->crawler->extractHtmlFromPage($url);
 
-        $file = new File($filename, $html, 'files'); // TODO: move file location value to .env
+        $file = new File($filename, $html, 'exports'); // TODO: move file location value to .env
 
         $this->fileSystemRepository->saveFile($file);
 
@@ -68,7 +68,7 @@ class CrawlerService
         $html = $this->generateHtmlFromTemplate('sitemapTemplate.html', $pageLinks);
 
         //TODO: move file location to .env (and maybe also the sitemap name)
-        $file = new File('sitemap.html', $html, 'files');
+        $file = new File('sitemap.html', $html, 'exports');
 
         $this->fileSystemRepository->savePage($file);
 
