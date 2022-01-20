@@ -68,7 +68,7 @@ class CrawlerService
         $html = $this->generateHtmlFromTemplate('sitemap.html', $pageLinks);
 
         //TODO: move file location to .env (and maybe also the sitemap name)
-        $file = new File('sitemap.twig.html', $html, 'exports');
+        $file = new File('sitemap.twig.html', $html, 'templates');
 
         $this->fileSystemRepository->savePage($file);
 
