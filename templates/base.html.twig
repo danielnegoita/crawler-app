@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="w-full md:max-w-2xl md:my-10 md:mx-auto">
+        <div class="md:rounded border">
+            {% block content %}{% endblock %}
+        </div>
+
+        {% block footer %}{% endblock %}
+    </div>
+</body>
+</html>
