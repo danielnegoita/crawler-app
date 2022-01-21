@@ -59,7 +59,7 @@ class AdminController extends Controller
      */
     public function logout(): Response
     {
-        $homeUrl = $this->urlGenerator->generate('app_home_home', [], UrlGeneratorInterface::ABSOLUTE_URL);
+        $homeUrl = $this->urlGenerator->generate('app_home_index', [], UrlGeneratorInterface::ABSOLUTE_URL);
 
         return $this->redirect($this->auth0->logout($homeUrl));
     }
