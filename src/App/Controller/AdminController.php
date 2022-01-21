@@ -2,27 +2,20 @@
 
 namespace App\Controller;
 
-use Auth0\SDK\Auth0;
+use App\Services\AuthService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-//TODO: refactor
 class AdminController extends Controller
 {
-    private Auth0 $auth0;
+    private AuthService $authService;
 
     private UrlGeneratorInterface $urlGenerator;
 
-    public function __construct(UrlGeneratorInterface $urlGenerator)
+    public function __construct(AuthService $authService, UrlGeneratorInterface $urlGenerator)
     {
-        $this->auth0 = new Auth0([
-            'domain' => $_ENV['AUTH0_DOMAIN'],
-            'clientId' => $_ENV['AUTH0_CLIENT_ID'],
-            'clientSecret' => $_ENV['AUTH0_CLIENT_SECRET'],
-            'cookieSecret' => $_ENV['AUTH0_COOKIE_SECRET']
-        ]);
-
+        $this->authService = $authService;
         $this->urlGenerator = $urlGenerator;
     }
 
@@ -31,14 +24,14 @@ class AdminController extends Controller
      */
     public function index(): Response
     {
-        $session = $this->auth0->getCredentials();
+        $credentials = $this->authService->getCredentials();
 
-        if(!$session) {
+        if(!$credentials) {
             return $this->redirectToRoute('app_admin_login');
         }
 
         return $this->render('admin.html.twig', [
-            'user' => $session->user
+            'user' => $credentials->user
         ]);
     }
 
@@ -47,11 +40,9 @@ class AdminController extends Controller
      */
     public function login(): Response
     {
-        $this->auth0->clear();
-
         $authorizeUrl = $this->urlGenerator->generate('app_admin_authorize', [], UrlGeneratorInterface::ABSOLUTE_URL);
 
-        return $this->redirect($this->auth0->login($authorizeUrl));
+        return $this->redirect($this->authService->login($authorizeUrl));
     }
 
     /**
@@ -61,7 +52,7 @@ class AdminController extends Controller
     {
         $homeUrl = $this->urlGenerator->generate('app_home_index', [], UrlGeneratorInterface::ABSOLUTE_URL);
 
-        return $this->redirect($this->auth0->logout($homeUrl));
+        return $this->redirect($this->authService->logout($homeUrl));
     }
 
     /**
@@ -71,7 +62,7 @@ class AdminController extends Controller
     {
         $authorizeUrl = $this->urlGenerator->generate('app_admin_authorize', [], UrlGeneratorInterface::ABSOLUTE_URL);
 
-        $this->auth0->exchange($authorizeUrl);
+        $this->authService->exchange($authorizeUrl);
 
         return $this->redirectToRoute('app_admin_index');
     }
