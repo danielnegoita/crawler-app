@@ -39,4 +39,9 @@ class AuthService
     {
         return $this->auth0->getCredentials();
     }
+
+    public function isAuthenticated(): bool
+    {
+        return !!$this->getCredentials();
+    }
 }

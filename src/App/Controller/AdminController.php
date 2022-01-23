@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Services\AuthService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Finder\Exception\AccessDeniedException;
 
 class AdminController extends Controller
 {
@@ -13,6 +14,11 @@ class AdminController extends Controller
     public function __construct(AuthService $authService)
     {
         $this->authService = $authService;
+
+        // check if user is authenticated
+        if(!$this->authService->isAuthenticated()) {
+            throw new AccessDeniedException('You must login first to access this section');
+        }
     }
 
     /**
@@ -20,14 +26,8 @@ class AdminController extends Controller
      */
     public function index(): Response
     {
-        $credentials = $this->authService->getCredentials();
-
-        if(!$credentials) {
-            return $this->redirectToRoute('app_security_login');
-        }
-
         return $this->render('admin.html.twig', [
-            'user' => $credentials->user
+            'user' => $this->authService->getCredentials()->user
         ]);
     }
 }
