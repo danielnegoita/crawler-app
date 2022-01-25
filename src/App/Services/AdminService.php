@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Repository\CrawlerRepositoryInterface;
 use App\Repository\LinkRepositoryInterface;
 
-class LinkService
+class AdminService
 {
     private LinkRepositoryInterface $linkRepository;
 

@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Services\AuthService;
-use App\Services\LinkService;
+use App\Services\AdminService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,12 +14,12 @@ class AdminController extends Controller
 {
     private AuthService $authService;
 
-    private LinkService $linkService;
+    private AdminService $adminService;
 
-    public function __construct(AuthService $authService, LinkService $linkService)
+    public function __construct(AuthService $authService, AdminService $adminService)
     {
         $this->authService = $authService;
-        $this->linkService = $linkService;
+        $this->adminService = $adminService;
 
         // check if user is authenticated
         if(!$this->authService->isAuthenticated()) {
@@ -43,7 +43,7 @@ class AdminController extends Controller
     public function stats(Request $request): Response
     {
         return new JsonResponse(
-            $this->linkService->internalLinks($request->get('url'))
+            $this->adminService->internalLinks($request->get('url'))
         );
     }
 
@@ -56,7 +56,7 @@ class AdminController extends Controller
     public function crawl(Request $request): Response
     {
         return new JsonResponse(
-            $this->linkService->crawl($request->get('url'))
+            $this->adminService->crawl($request->get('url'))
         );
     }
 
