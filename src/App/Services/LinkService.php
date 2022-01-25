@@ -17,10 +17,15 @@ class LinkService
         $this->crawlerRepository = $crawlerRepository;
     }
 
-    public function pageInternalLinks(string $url): ?array
+    public function crawl(string $url): ?array
     {
         $this->crawlerRepository->crawl($url);
 
+        return $this->internalLinks($url);
+    }
+
+    public function internalLinks(string $url): ?array
+    {
         return $this->linkRepository->getInternalLinks($url);
     }
 }

@@ -45,7 +45,7 @@ class AdminController extends Controller
     public function crawl(Request $request): Response
     {
         return new JsonResponse(
-            $this->linkService->pageInternalLinks($request->get('url'))
+            $this->linkService->crawl($request->get('url'))
         );
     }
 
