@@ -17,37 +17,42 @@ var app = new Vue({
     },
 
     created: function() {
-        this.getStats();
-        this.getErrors();
+        this.fetchStats();
+        this.fetchIssues();
     },
 
     methods: {
-        getStats() {
-            //TODO
-        },
+        fetchStats() {
+            var vm = this;
 
-        getErrors() {
-            //TODO
+            this.reset();
+
+            fetch(window.routes.stats + '?url=' + window.routes.homepageAbsolute)
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(data) {
+                    vm.links = data;
+                })
+                .catch(function(error) {
+                    vm.hasErrors = true;
+                    vm.fetchIssues();
+                    console.error(error);
+                });
         },
 
         crawlHomepage() {
-            var formData = new FormData();
-            formData.append('url', window.routes.homepageAbsolute);
-
-            this.crawlPage(formData);
+            this.crawlPage(window.routes.homepageAbsolute);
         },
 
-        crawlPage: function(data) {
+        crawlPage: function(url) {
             var vm = this;
 
-            this.isCrawling = true;
-            this.hasErrors = false;
-            this.hasSuccess = false;
+            this.reset();
 
-            fetch(window.routes.crawl, {
-                method: 'POST',
-                body: data
-            })
+            this.isCrawling = true;
+
+            fetch(window.routes.crawl + '?url=' + url)
                 .then(function(response) {
                     return response.json();
                 })
@@ -63,7 +68,7 @@ var app = new Vue({
                 })
                 .catch(function(error) {
                     vm.hasErrors = true;
-                    vm.fetchErrors();
+                    vm.fetchIssues();
                     console.error(error);
                 })
                 .finally(function() {
@@ -71,7 +76,7 @@ var app = new Vue({
                 });
         },
 
-        fetchErrors: function() {
+        fetchIssues: function() {
             //TODO: get errors from DB
         },
 
@@ -80,6 +85,12 @@ var app = new Vue({
         },
 
         closeSuccessAlert: function() {
+            this.hasSuccess = false;
+        },
+
+        reset() {
+            this.isCrawling = false;
+            this.hasErrors = false;
             this.hasSuccess = false;
         }
     }
