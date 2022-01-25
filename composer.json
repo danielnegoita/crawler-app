@@ -58,6 +58,7 @@
 		"symfony/web-profiler-bundle": "^6.0",
 		"symfony/yaml": "^6.0",
 		"tightenco/collect": "^8.79",
-		"twig/twig": "^3.3"
-	}
+		"twig/twig": "^3.3",
+      	"ext-pdo": "*"
+    }
 }
