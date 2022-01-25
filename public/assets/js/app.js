@@ -7,7 +7,8 @@ var app = new Vue({
         isCrawling: false,
         hasSuccess: false,
         hasErrors: false,
-        links: []
+        links: [],
+        issues: []
     },
 
     computed: {
@@ -22,7 +23,7 @@ var app = new Vue({
     },
 
     methods: {
-        fetchStats() {
+        fetchStats: function() {
             var vm = this;
 
             this.reset();
@@ -41,7 +42,7 @@ var app = new Vue({
                 });
         },
 
-        crawlHomepage() {
+        crawlHomepage: function() {
             this.crawlPage(window.routes.homepageAbsolute);
         },
 
@@ -77,7 +78,18 @@ var app = new Vue({
         },
 
         fetchIssues: function() {
-            //TODO: get errors from DB
+            var vm = this;
+
+            fetch(window.routes.issues)
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(data) {
+                    vm.issues = data;
+                })
+                .catch(function(error) {
+                    console.error(error);
+                });
         },
 
         closeErrorAlert: function() {

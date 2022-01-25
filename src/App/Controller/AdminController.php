@@ -48,6 +48,16 @@ class AdminController extends Controller
     }
 
     /**
+     * @Route("/admin/issues")
+     */
+    public function issues(): Response
+    {
+        return new JsonResponse(
+            $this->adminService->issues()
+        );
+    }
+
+    /**
      * @Route("/admin/crawl")
      *
      * @param Request $request
