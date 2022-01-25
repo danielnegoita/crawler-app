@@ -3,12 +3,11 @@
 namespace Crawler\Domain\Model;
 
 use Crawler\Domain\Url;
-use Crawler\Domain\Model\Traits\SoftDeleteable;
 use Crawler\Domain\Model\Traits\Timestampable;
 
 final class Link
 {
-    use Timestampable, SoftDeleteable;
+    use Timestampable;
 
     private string $link;
 
