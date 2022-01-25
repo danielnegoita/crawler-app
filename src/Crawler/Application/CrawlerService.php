@@ -70,7 +70,7 @@ class CrawlerService
         //TODO: move file location to .env (and maybe also the sitemap name)
         $file = new File('sitemap.twig.html', $html, 'templates');
 
-        $this->fileSystemRepository->savePage($file);
+        $this->fileSystemRepository->saveFile($file);
 
         return $this;
     }
