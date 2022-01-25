@@ -3,3 +3,6 @@
 
 # Cache, session files and logs
 /var/
+
+# app data
+/exports/
