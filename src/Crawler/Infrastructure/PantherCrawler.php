@@ -61,7 +61,7 @@ final class PantherCrawler implements CrawlerInterface
 
     private function crawl(string $url): Crawler
     {
-        $this->client = Client::createChromeClient(PROJECT_DIR . $_ENV['CHROME_DRIVER_PATH']);
+        $this->client = Client::createChromeClient(dirname(__DIR__, 3) . '/drivers/chromedriver');
 
         $this->client->request('GET', $url);
 
