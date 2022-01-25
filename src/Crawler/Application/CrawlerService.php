@@ -77,6 +77,6 @@ class CrawlerService
 
     private function generateHtmlFromTemplate(string $template, ?array $data = []): string
     {
-        return $this->templateEngine->render($template, $data);
+        return $this->templateEngine->render($template, ['links' => $data]);
     }
 }
