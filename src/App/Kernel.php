@@ -34,6 +34,11 @@ class Kernel extends BaseKernel
             ->autoconfigure()
         ;
 
+        $c->services()
+            ->load('Crawler\\', __DIR__.'/../Crawler/*')
+            ->autowire()
+            ->autoconfigure();
+
         // configure WebProfilerBundle only if the bundle is enabled
         if (isset($this->bundles['WebProfilerBundle'])) {
             $c->extension('web_profiler', [
