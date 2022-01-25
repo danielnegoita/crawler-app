@@ -7,6 +7,8 @@ use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
+define('PROJECT_DIR', dirname(__DIR__, 2));
+
 class Kernel extends BaseKernel
 {
     use MicroKernelTrait;
