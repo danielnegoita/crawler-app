@@ -10,9 +10,12 @@ class MySqlAdapter implements StorageInterface
 
     public function __construct()
     {
-        $this->connection = new PDO('mysql:host=127.0.0.1;dbname=crawler', 'root', 'root', [
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ
-        ]);
+        $this->connection = new PDO(
+            'mysql:host='.$_ENV['DB_HOST'].';dbname='.$_ENV['DB_DATABASE'],
+            $_ENV['DB_USER'],
+            $_ENV['DB_PASSWORD'],
+            [ PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ ]
+        );
     }
 
     public function connection(): PDO
