@@ -4,5 +4,5 @@ namespace App\Repository\Adapters;
 
 interface StorageInterface
 {
-    public function getLinksByPageUrl(string $url): ?array;
+    public function connection(): \PDO;
 }

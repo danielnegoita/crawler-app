@@ -10,16 +10,13 @@ class MySqlAdapter implements StorageInterface
 
     public function __construct()
     {
-        $this->connection = new PDO('mysql:host=127.0.0.1;dbname=crawler', 'root', 'root');
+        $this->connection = new PDO('mysql:host=127.0.0.1;dbname=crawler', 'root', 'root', [
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ
+        ]);
     }
 
-    public function getLinksByPageUrl(string $url): ?array
+    public function connection(): PDO
     {
-        $query = 'SELECT * FROM links WHERE page = ?';
-
-        $stmt = $this->connection->prepare($query);
-        $stmt->execute([$url]);
-
-        return $stmt->fetchAll();
+        return $this->connection;
     }
 }

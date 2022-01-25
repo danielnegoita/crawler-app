@@ -15,6 +15,11 @@ class LinkRepository implements LinkRepositoryInterface
 
     public function getInternalLinks(string $url): ?array
     {
-        return $this->storage->getLinksByPageUrl($url);
+        $query = 'SELECT * FROM links WHERE page = ?';
+
+        $stmt = $this->storage->connection()->prepare($query);
+        $stmt->execute([$url]);
+
+        return $stmt->fetchAll();
     }
 }
