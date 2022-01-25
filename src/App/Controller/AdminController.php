@@ -36,6 +36,17 @@ class AdminController extends Controller
             'user' => $this->authService->getCredentials()->user
         ]);
     }
+
+    /**
+     * @Route("/admin/stats")
+     */
+    public function stats(Request $request): Response
+    {
+        return new JsonResponse(
+            $this->linkService->internalLinks($request->get('url'))
+        );
+    }
+
     /**
      * @Route("/admin/crawl")
      *
