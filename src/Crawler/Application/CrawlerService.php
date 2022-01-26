@@ -65,10 +65,10 @@ class CrawlerService
         $pageLinks = $this->crawler->extractPageInternalLinks($url);
 
         //TODO: move sitemap template name to .env
-        $html = $this->generateHtmlFromTemplate('sitemap-template.twig.html', $pageLinks);
+        $html = $this->generateHtmlFromTemplate('sitemap-template.html.twig', $pageLinks);
 
         //TODO: move file location to .env (and maybe also the sitemap name)
-        $file = new File('sitemap.twig.html', $html, 'templates');
+        $file = new File('sitemap.html.twig', $html, 'templates');
 
         $this->fileSystemRepository->saveFile($file);
 

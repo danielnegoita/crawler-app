@@ -15,7 +15,7 @@ class TemplateEngineTest extends TestCase
         $templateEngine = new TemplateEngine($twig);
 
         $html = $templateEngine->render(
-            'sitemap-template.twig.html',
+            'sitemap-template.html.twig',
             ['links' => ["http://test.com", "http://test.com/about"]]
         );
 
