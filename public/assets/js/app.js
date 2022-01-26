@@ -23,6 +23,12 @@ var app = new Vue({
     },
 
     methods: {
+        issueTrace: function(trace, length) {
+            length = length || 50;
+
+            return trace.length > length ? trace.slice(0, length) + '...' : trace;
+        },
+
         fetchStats: function() {
             var vm = this;
 
