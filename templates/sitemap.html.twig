@@ -1,16 +1,76 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-    <body>
-        <h1>Sitemap</h1>
-        <ul>
-                            <li>https://127.0.0.1:8000/login</li>
-                            <li>https://127.0.0.1:8000/hire</li>
-                            <li>https://127.0.0.1:8000/contact</li>
-                            <li>https://127.0.0.1:8000/resume</li>
-                            <li>https://127.0.0.1:8000/coverletter</li>
-                            <li>https://127.0.0.1:8000/sitemap</li>
-                            <li>https://127.0.0.1:8000/privacy-policy</li>
-                            <li>https://127.0.0.1:8000/terms-and-conditions</li>
-                    </ul>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div id="app" class="w-full md:max-w-2xl md:my-10 md:mx-auto">
+            <div class="p-5 md:p-0">
+        <ul class="flex justify-between items-center w-full p-2 text-sm text-gray-400">
+            <li class="flex items-center space-x-5">
+                <a href="/" class="flex items-center space-x-1 hover:text-indigo-500">
+                    <svg class="fill-gray-400" xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"/></svg>
+                    <span>Back to homepage</span>
+                </a>
+            </li>
+        </ul>
+        <div class="md:rounded border p-5">
+            <h1 class="text-xl font-bold">Sitemap</h1>
+            <ul>
+                                    <li>
+                        <a href="https://127.0.0.1:8000/login" class="font-medium text-indigo-600 hover:text-indigo-500 space-y-5">
+                            https://127.0.0.1:8000/login
+                        </a>
+                    </li>
+                                    <li>
+                        <a href="https://127.0.0.1:8000/hire" class="font-medium text-indigo-600 hover:text-indigo-500 space-y-5">
+                            https://127.0.0.1:8000/hire
+                        </a>
+                    </li>
+                                    <li>
+                        <a href="https://127.0.0.1:8000/contact" class="font-medium text-indigo-600 hover:text-indigo-500 space-y-5">
+                            https://127.0.0.1:8000/contact
+                        </a>
+                    </li>
+                                    <li>
+                        <a href="https://127.0.0.1:8000/resume" class="font-medium text-indigo-600 hover:text-indigo-500 space-y-5">
+                            https://127.0.0.1:8000/resume
+                        </a>
+                    </li>
+                                    <li>
+                        <a href="https://127.0.0.1:8000/coverletter" class="font-medium text-indigo-600 hover:text-indigo-500 space-y-5">
+                            https://127.0.0.1:8000/coverletter
+                        </a>
+                    </li>
+                                    <li>
+                        <a href="https://127.0.0.1:8000/sitemap" class="font-medium text-indigo-600 hover:text-indigo-500 space-y-5">
+                            https://127.0.0.1:8000/sitemap
+                        </a>
+                    </li>
+                                    <li>
+                        <a href="https://127.0.0.1:8000/privacy-policy" class="font-medium text-indigo-600 hover:text-indigo-500 space-y-5">
+                            https://127.0.0.1:8000/privacy-policy
+                        </a>
+                    </li>
+                                    <li>
+                        <a href="https://127.0.0.1:8000/terms-and-conditions" class="font-medium text-indigo-600 hover:text-indigo-500 space-y-5">
+                            https://127.0.0.1:8000/terms-and-conditions
+                        </a>
+                    </li>
+                            </ul>
+        </div>
+    </div>
+            <ul class="flex justify-center items-center space-x-5 py-5 text-sm text-gray-400">
+    <li>&copy; 2022 welovedev inc.</li>
+    <li><a href="/sitemap" class="hover:text-indigo-500">Sitemap</a></li>
+    <li><a href="/privacy-policy" class="hover:text-indigo-500">Privacy</a></li>
+    <li><a href="/terms-and-conditions" class="hover:text-indigo-500">Terms</a></li>
+</ul>
+    </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="/assets/js/app.js"></script
+</body>
 </html>

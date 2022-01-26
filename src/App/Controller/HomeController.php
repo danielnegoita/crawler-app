@@ -24,4 +24,12 @@ class HomeController extends Controller
             'isAuthenticated' => null !== $this->authService->getCredentials()
         ]);
     }
+
+    /**
+     * @Route("/sitemap")
+     */
+    public function sitemap(): Response
+    {
+        return $this->render('sitemap.html.twig');
+    }
 }

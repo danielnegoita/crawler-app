@@ -1,11 +1,30 @@
-<!DOCTYPE html>
-<html>
-    <body>
-        <h1>Sitemap</h1>
-        <ul>
-            {% for link in links %}
-                <li>{{ link }}</li>
-            {% endfor %}
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="p-5 md:p-0">
+        <ul class="flex justify-between items-center w-full p-2 text-sm text-gray-400">
+            <li class="flex items-center space-x-5">
+                <a href="/" class="flex items-center space-x-1 hover:text-indigo-500">
+                    <svg class="fill-gray-400" xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"/></svg>
+                    <span>Back to homepage</span>
+                </a>
+            </li>
         </ul>
-    </body>
-</html>
+        <div class="md:rounded border p-5">
+            <h1 class="text-xl font-bold">Sitemap</h1>
+            <ul>
+                {% for link in links %}
+                    <li>
+                        <a href="{{ link }}" class="font-medium text-indigo-600 hover:text-indigo-500 space-y-5">
+                            {{ link }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {% include 'partials/footer.html.twig' %}
+{% endblock %}

@@ -167,10 +167,5 @@
 {% endblock %}
 
 {% block footer %}
-    <ul class="flex justify-center items-center space-x-5 py-5 text-sm text-gray-400">
-        <li>&copy; 2022 welovedev inc.</li>
-        <li><a href="/sitemap" class="hover:text-indigo-500">Sitemap</a></li>
-        <li><a href="/privacy-policy" class="hover:text-indigo-500">Privacy</a></li>
-        <li><a href="/terms-and-conditions" class="hover:text-indigo-500">Terms</a></li>
-    </ul>
+    {% include 'partials/footer.html.twig' %}
 {% endblock %}
