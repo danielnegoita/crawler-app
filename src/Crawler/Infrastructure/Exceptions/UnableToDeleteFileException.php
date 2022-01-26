@@ -1,6 +1,6 @@
 <?php
 
-namespace Crawler\Application\Exceptions;
+namespace Crawler\Infrastructure\Exceptions;
 
 
 class UnableToDeleteFileException extends BaseException

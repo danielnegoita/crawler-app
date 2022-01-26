@@ -1,6 +1,6 @@
 <?php
 
-namespace Crawler\Application\Exceptions;
+namespace Crawler\Infrastructure\Exceptions;
 
 
 class UnableToRenderTemplate extends BaseException

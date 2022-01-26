@@ -6,7 +6,7 @@ use Exception;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use Crawler\Infrastructure\TemplateEngineAdapterInterface;
-use Crawler\Application\Exceptions\UnableToRenderTemplate;
+use Crawler\Infrastructure\Exceptions\UnableToRenderTemplate;
 
 class TwigAdapter implements TemplateEngineAdapterInterface
 {

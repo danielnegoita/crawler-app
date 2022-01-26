@@ -9,8 +9,8 @@ use League\Flysystem\UnableToDeleteFile;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\Local\LocalFilesystemAdapter;
 use Crawler\Infrastructure\FileSystemAdapterInterface;
-use Crawler\Application\Exceptions\UnableToSaveFileException;
-use Crawler\Application\Exceptions\UnableToDeleteFileException;
+use Crawler\Infrastructure\Exceptions\UnableToSaveFileException;
+use Crawler\Infrastructure\Exceptions\UnableToDeleteFileException;
 
 class FlySystemAdapter implements FileSystemAdapterInterface
 {

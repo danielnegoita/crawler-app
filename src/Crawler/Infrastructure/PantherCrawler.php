@@ -6,8 +6,8 @@ use Crawler\Domain\Url;
 use Crawler\Domain\CrawlerInterface;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
-use Crawler\Application\Exceptions\UnableToExtractHtmlFromUrl;
-use Crawler\Application\Exceptions\UnableToExtractLinksFromUrl;
+use Crawler\Infrastructure\Exceptions\UnableToExtractHtmlFromUrl;
+use Crawler\Infrastructure\Exceptions\UnableToExtractLinksFromUrl;
 
 final class PantherCrawler implements CrawlerInterface
 {
