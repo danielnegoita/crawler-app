@@ -41,4 +41,19 @@ class MySqlAdapter implements StorageAdaptorInterface
 
         return $stmt->execute([$url]);
     }
+
+    public function saveIssue(array $exception): bool
+    {
+        $query = 'INSERT INTO issues (issue, level, status)
+                  VALUES (?, ?, ?)';
+
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute([
+            $exception['message'],
+            $exception['level_name'],
+            'unhandled'
+        ]);
+
+        return !!$this->connection->lastInsertId();
+    }
 }
