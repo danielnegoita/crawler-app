@@ -47,7 +47,7 @@ class CrawlerService
         return $this;
     }
 
-    public function savePageHtmlToFile(Url $url)
+    public function savePageHtmlToFile(Url $url): self
     {
         $filename = $url->toEncode() . '.html';
 
@@ -60,7 +60,7 @@ class CrawlerService
         return $this;
     }
 
-    public function generateSitemap(Url $url)
+    public function generateSitemap(Url $url): self
     {
         $pageLinks = $this->crawler->extractPageInternalLinks($url);
 
@@ -78,5 +78,12 @@ class CrawlerService
     private function generateHtmlFromTemplate(string $template, ?array $data = []): string
     {
         return $this->templateEngine->render($template, ['links' => $data]);
+    }
+
+    public function deletePageLinks(Url $url): self
+    {
+        $this->linkRepository->deleteLinksByPageUrl($url->toString());
+
+        return $this;
     }
 }

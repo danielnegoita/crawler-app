@@ -32,4 +32,13 @@ class MySqlAdapter implements StorageAdaptorInterface
 
         return !!$this->connection->lastInsertId();
     }
+
+    public function deleteLinksByPageUrl(string $url): bool
+    {
+        $query = 'DELETE FROM links WHERE page = ?';
+
+        $stmt = $this->connection->prepare($query);
+
+        return $stmt->execute([$url]);
+    }
 }

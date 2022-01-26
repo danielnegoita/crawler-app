@@ -21,7 +21,9 @@ class CrawlPageCommandHandler
     {
         $url = Url::fromString($command->getUrl());
 
-        $this->crawlerService->saveLinksFromPage($url)
+        $this->crawlerService
+            ->deletePageLinks($url)
+            ->saveLinksFromPage($url)
             ->savePageHtmlToFile($url)
             ->generateSitemap($url);
     }
