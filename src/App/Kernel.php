@@ -13,12 +13,10 @@ class Kernel extends BaseKernel
 
     public function registerBundles(): array
     {
-        $bundles = [
+        return [
             new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new \Symfony\Bundle\TwigBundle\TwigBundle(),
         ];
-
-        return $bundles;
     }
 
     protected function configureContainer(ContainerConfigurator $c): void
@@ -36,24 +34,10 @@ class Kernel extends BaseKernel
             ->load('Crawler\\', __DIR__.'/../Crawler/*')
             ->autowire()
             ->autoconfigure();
-
-        // configure WebProfilerBundle only if the bundle is enabled
-        if (isset($this->bundles['WebProfilerBundle'])) {
-            $c->extension('web_profiler', [
-                'toolbar' => true,
-                'intercept_redirects' => false,
-            ]);
-        }
     }
 
     protected function configureRoutes(RoutingConfigurator $routes): void
     {
-        // import the WebProfilerRoutes, only if the bundle is enabled
-        if (isset($this->bundles['WebProfilerBundle'])) {
-            $routes->import('@WebProfilerBundle/Resources/config/routing/wdt.xml')->prefix('/_wdt');
-            $routes->import('@WebProfilerBundle/Resources/config/routing/profiler.xml')->prefix('/_profiler');
-        }
-
         // load the annotation routes
         $routes->import(__DIR__.'/Controller/', 'annotation');
     }
