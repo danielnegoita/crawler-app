@@ -36,6 +36,10 @@ class CrawlerService
     {
         $pageLinks = $this->crawler->extractPageInternalLinks($url);
 
+        if(!$pageLinks) {
+            return $this;
+        }
+
         foreach($pageLinks as $pageLink) {
             $link = Link::create(Url::fromString($pageLink), $url->toString());
 

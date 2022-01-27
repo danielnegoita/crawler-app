@@ -27,6 +27,11 @@ class CrawlCronCommand extends Command
 
         $links = $this->adminService->crawl('http://0.0.0.0:8001');
 
+        if(!$links) {
+            $output->writeln('<info>no links found</info>');
+            return Command::SUCCESS;
+        }
+
         foreach ($links as $link) {
             $output->writeln('<comment>' . $link->link . '</comment>');
         }

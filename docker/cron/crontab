@@ -1,0 +1,2 @@
+59 23 * * * root /srv/app/bin/script.sh
+# An empty line

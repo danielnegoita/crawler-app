@@ -52,6 +52,20 @@ services:
     volumes:
       - .:/srv/app
 
+  cron:
+    container_name: crawler_cron
+    build:
+      context: ./docker
+      dockerfile: cron/Dockerfile
+    restart: always
+    ports:
+      - 9001:9000
+    networks:
+      - net
+    volumes:
+      - .:/srv/app
+      - ./docker/cron/script.sh:/srv/app/bin/script.sh
+
 volumes:
   db_data:
 
