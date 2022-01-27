@@ -15,3 +15,7 @@ CREATE TABLE `links` (
     `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
     KEY `page`(`page`)
 );
+
+
+INSERT INTO `issues` (`id`, `issue`, `status`, `level`, `created_at`, `updated_at`) VALUES
+(1, 'This is a example error', 'unhandled', 'ERROR', '2022-01-26 09:54:43', '2022-01-26 09:54:43');
