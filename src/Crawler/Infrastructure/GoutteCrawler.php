@@ -2,14 +2,14 @@
 
 namespace Crawler\Infrastructure;
 
+use Goutte\Client;
 use Crawler\Domain\Url;
 use Crawler\Domain\CrawlerInterface;
-use Symfony\Component\Panther\Client;
-use Symfony\Component\Panther\DomCrawler\Crawler;
+use Symfony\Component\DomCrawler\Crawler;
 use Crawler\Infrastructure\Exceptions\UnableToExtractHtmlFromUrl;
 use Crawler\Infrastructure\Exceptions\UnableToExtractLinksFromUrl;
 
-final class PantherCrawler implements CrawlerInterface
+final class GoutteCrawler implements CrawlerInterface
 {
     private Client $client;
 
@@ -33,7 +33,10 @@ final class PantherCrawler implements CrawlerInterface
         $pageLinks = collect([]);
 
         foreach($results->links() as $link) {
-            $pageLinks->push($link->getUri());
+            // Quick fix
+            $externalUrl = $this->replaceInternalWithExternalHost($link->getUri());
+
+            $pageLinks->push($externalUrl);
         }
 
         return $pageLinks->unique()
@@ -61,10 +64,39 @@ final class PantherCrawler implements CrawlerInterface
 
     private function crawl(string $url): Crawler
     {
-        $this->client = Client::createChromeClient(dirname(__DIR__, 3) . '/drivers/chromedriver');
+        $this->client = new Client();
 
-        $this->client->request('GET', $url);
+        // Quick fix
+        $dockerUrl = $this->replaceExternalWithInternalHost($url);
+
+        $this->client->request('GET', $dockerUrl);
 
         return $this->client->getCrawler();
+    }
+
+    private function replaceExternalWithInternalHost($url)
+    {
+        /**
+         * This only applies for internal links
+         *
+         * To avoid Docker error 'connection refused' on cUrl requests we need o replace
+         * the container public IP with host.docker.internal @see https://stackoverflow.com/a/24326540/10532691
+         *
+         * This solution applies to all Docker versions newer then December 2020
+         */
+        return str_replace('0.0.0.0', 'host.docker.internal', $url);
+    }
+
+    private function replaceInternalWithExternalHost($url)
+    {
+        /**
+         * This only applies for internal links
+         *
+         * To avoid Docker error 'connection refused' on cUrl requests we need o replace
+         * the container public IP with host.docker.internal @see https://stackoverflow.com/a/24326540/10532691
+         *
+         * This solution applies to all Docker versions newer then December 2020
+         */
+        return str_replace('host.docker.internal', '0.0.0.0', $url);
     }
 }
