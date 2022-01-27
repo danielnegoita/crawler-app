@@ -15,7 +15,7 @@ class IssueRepository implements IssueRepositoryInterface
 
     public function getAllIssues(): ?array
     {
-        $query = 'SELECT * FROM issues';
+        $query = 'SELECT * FROM issues ORDER BY id DESC';
 
         $stmt = $this->storage->connection()->prepare($query);
 
