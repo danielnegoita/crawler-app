@@ -18,6 +18,8 @@ services:
     depends_on:
       - php
       - db
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   db:
     container_name: crawler_db
