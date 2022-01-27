@@ -3,20 +3,21 @@
 namespace Tests;
 
 use Crawler\Domain\Url;
-use Crawler\Infrastructure\PantherCrawler;
+use Crawler\Infrastructure\GoutteCrawler;
 use PHPUnit\Framework\TestCase;
 
-class PantherCrawlerTest extends TestCase
+class CrawlerTest extends TestCase
 {
+    // TODO: refactor to use an interface instead of a concreate class
     // TODO: refactor this test to crawl a local page for better control
     // TODO: write a test for when there are no internal links on the page
     public function testCanExtractInternalPageLinks()
     {
-        $panther = new PantherCrawler();
+        $crawler = new GoutteCrawler();
 
         $url = Url::fromString('https://api-platform.com/');
 
-        $pageLinks = $panther->extractPageInternalLinks($url);
+        $pageLinks = $crawler->extractPageInternalLinks($url);
 
         $this->assertGreaterThan(0, count($pageLinks));
     }
@@ -25,9 +26,9 @@ class PantherCrawlerTest extends TestCase
     {
         $url = Url::fromString('http://example.com/');
 
-        $panther = new PantherCrawler();
+        $crawler = new GoutteCrawler();
 
-        $html = $panther->extractHtmlFromPage($url);
+        $html = $crawler->extractHtmlFromPage($url);
 
         $this->assertMatchesRegularExpression('/<\/?[a-z][\s\S]*>/i', $html);
     }
