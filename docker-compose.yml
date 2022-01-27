@@ -1,0 +1,58 @@
+version: '3'
+
+services:
+  apache:
+    container_name: crawler_apache
+    build:
+      context: ./docker
+      dockerfile: apache/Dockerfile
+    restart: always
+    ports:
+      - 8001:80
+    networks:
+      - net
+    volumes:
+      - ./public:/usr/local/apache2/htdocs
+    environment:
+      PHP_APP_DIR: /srv/app/public
+    depends_on:
+      - php
+      - db
+
+  db:
+    container_name: crawler_db
+    image: mysql:8.0.28
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - net
+
+  php:
+    container_name: crawler_php
+    build:
+      context: ./docker
+      dockerfile: php/Dockerfile
+    restart: always
+    ports:
+      - 9000:9000
+    networks:
+      - net
+    volumes:
+      - .:/srv/app
+
+volumes:
+  db_data:
+
+networks:
+  net:
+    driver: bridge
