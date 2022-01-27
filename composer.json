@@ -41,7 +41,6 @@
 	"require": {
 		"ext-pdo": "*",
 		"auth0/auth0-php": "^8.0",
-		"dbrekelmans/bdi": "^1.0",
 		"doctrine/annotations": "^1.13",
 		"guzzlehttp/guzzle": "^7.4",
 		"guzzlehttp/psr7": "^2.1",
@@ -54,7 +53,6 @@
 		"symfony/framework-bundle": "^6.0",
 		"symfony/http-foundation": "^6.0",
 		"symfony/http-kernel": "^6.0",
-		"symfony/panther": "^2.0",
 		"symfony/routing": "^6.0",
 		"symfony/twig-bundle": "^6.0",
 		"symfony/web-profiler-bundle": "^6.0",
