@@ -88,6 +88,15 @@ For the frontend, I have used `TailwindCSS` with no JS until this point, placed 
 
 Also, I have used `Symfony/Console` to create a command that can be triggered by the cron job to run the crawling task.
 
+## How to run de application
+```ssh
+1. git clone
+2. cd & run "docker-compose up -d"
+3. visit 0.0.0.0:8001
+4. To login into the Admin, click on the button from the bottom-right corner and enter:
+    - email: demo@example.com  
+    - password: demo
+```
 
 
 
