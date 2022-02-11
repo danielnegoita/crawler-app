@@ -1,5 +1,7 @@
 ### PHP Technical Assessment Template
 
+#### *Note: Don't forget to check the [Explanation.md](https://github.com/danielnegoita/crawler-app/blob/main/Explanation.md) file for the setup instructions and explanation about the decisions made while building the app.
+##
 #### Task 1: Build an app or plugin that delivers the desired outcome
 We want you to build a PHP app or WordPress plugin that provides the desired outcome.
 
@@ -45,6 +47,12 @@ Let’s keep this simple by:
 - It does not create new global variables.
 - Use a MariaDB or MySQL database.
 
+##### 🎖Bonus Points
+Want extra credit? Cool, here are some bonus opportunities for you:
+
+- Your app or plugin passes PHP Code Sniffer inspection (The PHP CS configuration file is included in this repository).
+- Automatically test that your code works as expected by writing unit and integration tests.
+
 #### Task 2: Explain It
 Add an `Explanation.md` file to your repo that explains:
 
@@ -70,6 +78,3 @@ Yes. You are free to use to choose any third-party library or framework that sui
 
 ##### Do my git commit history matter?
 Yes it does. Why? It shows us how you work.
-
-##### Where do I ask questions?
-Create an issue in your assessment repo. Let's discuss things there. Ping us. We are happy to help and collaborate.
