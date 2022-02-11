@@ -26,13 +26,13 @@ After that, I decided to restructure everything into Modules with a Microservice
 
 As such, the Modules `Crawler` and `App` communicate between them using Adapters (Events or REST in a real-world app).
 
-The initial Crawler code moved into the Crawler Module. 
+The initial Crawler code moved into the `Crawler Module`. 
 
-The App Module contains an MCV micro-framework built using different libraries, mostly Symfony components. 
+The `App Module` contains an MCV micro-framework built using different libraries, mostly Symfony components. 
 
 For the frontend, I used Tailwind and Vue.
 
-For the database, I have used MySQL.
+For the database, MySQL is used.
 
 I dockerized the application for easy setup and testing.
 
@@ -84,16 +84,17 @@ The path I've chosen here was to use different Symfony components to create a mi
 
 For authentication, I have used `Auth0` to abstract away the complexity and to speed up the development.
 
-For the frontend, I have used `TailwindCSS` with no JS until this point, placed inside the App Module, although in a real-world application maybe I would have created a separate client and used something like `Nuxt`.
+For the frontend, I have used `TailwindCSS` and `Vue`, placed inside the `App Module`, although in a real-world application maybe I would have created a separate client app and used something like `Nuxt`.
 
 Also, I have used `Symfony/Console` to create a command that can be triggered by the cron job to run the crawling task.
 
 ## How to run de application
 ```ssh
-1. git clone
+1. git clone https://github.com/danielnegoita/crawler-app.git
 2. cd & run "docker-compose up -d"
-3. visit 0.0.0.0:8001
-4. To login into the Admin, click on the button from the bottom-right corner and enter:
+3. run "docker exec -it crawler_php composer install"
+4. visit 0.0.0.0:8001
+5. To login into the Admin, click on the button from the bottom-right corner and enter:
     - email: demo@example.com  
     - password: demo
 ```
