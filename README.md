@@ -45,12 +45,6 @@ Let’s keep this simple by:
 - It does not create new global variables.
 - Use a MariaDB or MySQL database.
 
-##### 🎖Bonus Points
-Want extra credit? Cool, here are some bonus opportunities for you:
-
-- Your app or plugin passes PHP Code Sniffer inspection (The PHP CS configuration file is included in this repository).
-- Automatically test that your code works as expected by writing unit and integration tests. Need inspiration? Check out our [GitHub](https://github.com/wp-media/wp-rocket/tree/develop/tests).
-
 #### Task 2: Explain It
 Add an `Explanation.md` file to your repo that explains:
 
